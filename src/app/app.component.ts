@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { EmpService } from './emp.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +6,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'emsproj';
-  // employees:any= [];
+  title = 'myproj';
+  name = "Abishek.....";
+  displayName = false;
+  color="red";
+  colors=['pink','black','grey','lightgrey','darkgrey'];
+  date="05-25-2004";
+  // myid = 123;
+  // isdisabled = false;
+  // successs ='success'
+  // hasError = false;
+  // msgclass = {
+  //   success: !this.hasError,
+  //   error:this.hasError,
+  // };
+  // mystyle = "pink";
+  // dstyle={
+  //   color:'black',
+  //   fontStyle:'italic',
+  // };
 
-  // constructor(private empservice: EmpService){}
-
-  // ngOnInit(){
-  //   this.employees = this.empservice.getAllEmployees().subscribe((emp)=> (this.employees=emp));
-  //   console.log(this.employees);
-  // }
-  constructor(private router: Router) {}
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('userToken'); // Check if JWT exists
-  }
-
-  logout() {
-    localStorage.removeItem('userToken'); // Remove JWT
-    this.router.navigate(['/login']); // Redirect to home page
-  }
+  // sayByeBye(){
+  //   console.log("bYE For now....")
+  // };
 
 }

@@ -1,0 +1,6 @@
+<p>parent works!</p>
+
+<app-child [parentData]="myname" 
+(childValue)="msgFromChild= $event"></app-child>
+
+{{msgFromChild}}
