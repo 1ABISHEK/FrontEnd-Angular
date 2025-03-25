@@ -1,67 +1,51 @@
- I am {{name|uppercase}} <!-- // uppercasepipes -->
- <input type="text" [(ngModel)]="name" /> <br>
- <app-parent></app-parent><br>
-
-
-
- 
- <br>
- {{25|currency:" INR ":"code"}}
- <br/>
- {{date}}
-<br>
- {{date|date:"shortDate"}}
-<br>
-{{5.678|number:"2.1-2"}}
-<br>
-{{5.678|number:"2.1-4"}}
-
-
-<div *ngIf="displayName; then thenBlock; else elseBlock"></div>
-
-<ng-template #thenBlock>
-   <div style="color: forestgreen">Welcome IF</div>
-</ng-template>
-<ng-template #elseBlock>
-   <div style="color: aquamarine">Welcome Else</div>
-</ng-template>
-
-<div [ngSwitch]="color">
-   <div *ngSwitchCase="'red'">
-      <h2 style="color: red">Red Color</h2>
-   </div>
-   <div *ngSwitchCase="'blue'">
-      <h2 [style.color]="color">Blue Color</h2>
-   </div>
-   <div *ngSwitchCase="'green'">
-      <h2 style="color: green">Red Color</h2>
-   </div>
-   <div *ngSwitchDefault>
-      <h2>Choose a Color</h2>
-   </div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/aboutus"
+            >Aboutus</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/emplist"
+            >List Employee</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/namelist"
+            >List EmployeeNames</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/empadd"
+            >Add Employee</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/contactus"
+            >Contactus</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div>
+  <router-outlet></router-outlet>
 </div>
-
-<div *ngFor="let item of colors">
-   <div [style.color]="item">{{item}}</div>
-</div>
-
-
-
- <!-- <div>
-    <input type="text" value="" id="{{myid}}"/>
-    
-    <input type="text" value="Abii" [disabled]="isdisabled"/>
-
-    <h2 class="success">Hello</h2>
-    <h2 [class] = "successs">Good</h2>
-    /*property binding/* 
-    <h2 [ngClass] = "msgclass">Hi</h2>
- </div>
-
- <div>
-    <h2 style="color: purple;">Hello</h2>
-    <h2 [style.color]="mystyle">Good</h2>
-    <h2 [ngStyle] = "dstyle">Vanakkam</h2>
-
- </div>
- <input type="submit" value="Click Me!" (click)="sayByeBye()"/> -->

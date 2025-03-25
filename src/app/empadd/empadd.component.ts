@@ -8,17 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./empadd.component.css']
 })
 export class EmpaddComponent {
-  employee:any={
-    name:' ',
-    email:' ',
-    gender:' ',
-    isMarried:false
+  employee: any = {
+    name: '',
   };
   submitted = false;
   constructor(private empService: EmpService, public router: Router) {}
-  addEmployee(){
+  addEmployee() {
     console.log(this.employee);
-    this.empService.createEmployee(this.employee).subscribe((data: {}) => this.router.navigate(['/emplist']));
+    this.empService
+      .createEmployee(this.employee)
+      .subscribe((data: {}) => this.router.navigate(['/emplist']));
   }
   onSubmit() {
     this.submitted = true;

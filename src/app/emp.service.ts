@@ -1,53 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry,throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Employee } from './Employee';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpService {
-  employees=[];
+  apiUrl: string = 'http://localhost:8089/aemployee';
 
-    apiUrl:string="http://localhost:8089/demosprboot/api/semployee";
-    httpOptions = { 
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-    };
-    constructor(private http: HttpClient){}
-    getAllEmployees():Observable<any>{
-      return this.http.get<any>(this.apiUrl+'/listallemp')
-      .pipe(retry(1), catchError(this.handleError));;
-    }
-    createEmployee(employee: Employee): Observable<Employee> {
-      return this.http.post<Employee>(this.apiUrl + '/addemp', employee)
-      .pipe(retry(1), catchError(this.handleError));;
-    }
+  httpOptions = {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+  };
+  constructor(private http: HttpClient) {}
 
-    deleteEmployee(id: number): Observable<Employee> {
-      return this.http.delete<Employee>(`${this.apiUrl}/deletebyid/${id}`)
-      .pipe(retry(1), catchError(this.handleError));;
-    }
+  getAllEmployees(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/listallemp');
+  }
+  createEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(this.apiUrl + '/addemp', employee);
+  }
+  deleteEmployee(id: number): Observable<Employee> {
+    return this.http.delete<Employee>(`${this.apiUrl}/deletebyid/${id}`);
+  }
   getEmployeeById(id: number): Observable<Employee> {
-    return this.http.get<any>(`${this.apiUrl}/getempbyid/${id}`)
-    .pipe(retry(1), catchError(this.handleError));;
+    return this.http.get<any>(`${this.apiUrl}/getempbyid/${id}`);
   }
   updateEmployee(employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(this.apiUrl + '/updateemp', employee)
-    .pipe(retry(1), catchError(this.handleError));;
+    return this.http.put<Employee>(this.apiUrl + '/updateemp', employee);
   }
-  handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code : ${error.status} \n Error Message : ${error.message} `;
-    }
-
-    window.alert(errorMessage);
-    return throwError(errorMessage);
-  }
-    
 }

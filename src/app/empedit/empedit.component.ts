@@ -9,21 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EmpeditComponent {
   employee: any = {
-    ename: '',
-    email: '',
-    password: '',
-    gender: '',
-    isMarried: false,
+    name: '',
   };
-  submitted = false;
-
+  submitted=false;
   constructor(
     private empService: EmpService,
     public router: Router,
-    private aroute: ActivatedRoute	
-  ) {}
-  public id: any = this.aroute.snapshot.params['id'];    
-
+    private aroute: ActivatedRoute) {}
+    public id: any = this.aroute.snapshot.params['id'];    
   ngOnInit() {			
     this.empService
       .getEmployeeById(this.id)
@@ -34,7 +27,7 @@ export class EmpeditComponent {
   updateEmployee() {
     console.log(this.employee);
     this.empService
-      .updateEmployee(this.employee)	
+      .updateEmployee(this.employee)		
       .subscribe((data: {}) => this.router.navigate(['/emplist']));
   }
 
@@ -43,3 +36,4 @@ export class EmpeditComponent {
     alert('Employee datas are updated successfully!');
   }
 }
+
