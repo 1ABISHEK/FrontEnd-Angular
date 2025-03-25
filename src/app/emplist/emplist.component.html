@@ -1,0 +1,29 @@
+<p>emplist works!</p>
+<table class="table table-bordered">
+    <thead class="table-danger">
+      <tr class="table-danger">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>IsMarried</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="clickable" *ngFor="let emp of employees">
+        <td>
+          <a class="nav-link active" aria-current="page" routerLink="/updateemp/{{emp.id}}"
+          routerLinkActive="active" aria-current="page">
+            {{ emp.id }}
+          </a></td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{emp.isMarried|booleanToText}}</td>
+        <td>
+          <button (click)="onDelete(emp)">X</button>
+        </td>
+    </tr>
+    </tbody>
+    
+    
